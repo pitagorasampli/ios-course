@@ -1,0 +1,161 @@
+
+
+struct PointStruct {
+    var x: Int
+    var y: Int
+    var z: Int
+}
+
+class PointClass {
+    var x: Int
+    var y: Int
+    var z: Int
+    
+    init(x: Int, y: Int, z: Int) {
+        self.x = x
+        self.y = y
+        self.z = z
+    }
+}
+
+var pointStruct: PointStruct = PointStruct(x: 1, y: 1, z: 1)
+//print("antigo valor: \(pointStruct.x)")
+var newPointStruct = pointStruct
+//print("newPointStruct: \(newPointStruct.x)")
+newPointStruct.x = 10
+
+//print("antigo valor: \(pointStruct.x)")
+//print("newPointStruct: \(newPointStruct.x)")
+
+let pointClass: PointClass = PointClass(x: 2, y: 2, z: 2)
+let newPointClass = pointClass
+
+//print("antigo valor: \(pointClass.x)")
+//print("newPointStruct: \(newPointClass.x)")
+
+newPointClass.x = 1000
+
+//print("antigo valor: \(pointClass.x)")
+//print("newPointStruct: \(newPointClass.x)")
+
+
+class Point2D {
+    let x: Double
+    let y: Double
+    
+    init(x: Double, y: Double) {
+        self.x = x
+        self.y = y
+    }
+    
+    func calculateDistance(point: Point2D) -> Int {
+        return 1
+    }
+}
+
+class Point3D: Point2D {
+    let z: Double
+    
+    init(x: Double, y: Double, z: Double) {
+        self.z = z
+        super.init(x: x, y: y)
+    }
+}
+
+let point2d = Point2D(x: 0, y: 0)
+let point3d = Point3D(x: 1, y: 1, z: 1)
+
+// Imagine que vamos fazer um programa para um estacionamento
+// Temos que pensar em quais objetos a gente iria utilizar modelar o problema
+// O estacionamento tem:
+// - Vagas
+// - Veículos (Carros, motos ou caminhões)
+
+protocol Veiculo {
+    var modelo: String { get set }
+    var marca: String { get set }
+    var placa: String { get set }
+    
+    func descricao() -> String
+}
+
+struct Carro: Veiculo {
+    var modelo: String
+    var marca: String
+    var placa: String
+    
+    func soltarNitro() {
+        
+    }
+    
+    func descricao() -> String {
+        return "carro"
+    }
+}
+
+struct Moto: Veiculo {
+    var modelo: String
+    var marca: String
+    var placa: String
+    
+    func descricao() -> String {
+        return "moto"
+    }
+}
+
+struct Mobilete: Veiculo {
+    var modelo: String
+    var marca: String
+    var placa: String
+    
+    func descricao() -> String {
+        return "mobilete"
+    }
+}
+
+struct Caminhao: Veiculo {
+    var modelo: String
+    var marca: String
+    var placa: String
+    
+    func descricao() -> String {
+        return "caminhao"
+    }
+}
+
+
+let caminhao = Caminhao(modelo: "", marca: "", placa: "")
+print(caminhao.descricao())
+
+let mobilete = Mobilete(modelo: "", marca: "", placa: "")
+print(mobilete.descricao())
+
+let moto = Moto(modelo: "", marca: "", placa: "")
+let veiculos: [Any] = [caminhao, mobilete, moto]
+let veiculos2: [Veiculo] = [caminhao, mobilete, moto]
+
+for v in veiculos2 {
+    
+}
+
+protocol Tipo {
+    var tipoEmTexto: String { get }
+}
+
+enum TiposDeVeiculo: String, Tipo {
+    case caminhao = "caminhao"
+    case mobilete = "mobilete"
+    case carro = "carro daora"
+    case moto = "moto doida"
+    
+    var tipoEmTexto: String {
+        return "tipoEmText"
+    }
+    
+    func descricao() {
+        print(self.rawValue)
+    }
+}
+
+let tipo: TiposDeVeiculo = .moto
+tipo.descricao()
