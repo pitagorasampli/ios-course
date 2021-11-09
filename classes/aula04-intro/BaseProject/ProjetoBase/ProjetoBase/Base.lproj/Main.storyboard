@@ -116,6 +116,7 @@
                     <connections>
                         <outlet property="beforeLabel" destination="ijk-rb-zsq" id="vQf-1W-w5F"/>
                         <outlet property="currentLabel" destination="YMX-Bf-Nb3" id="lKM-MG-w22"/>
+                        <outlet property="sendButton" destination="8Nc-ID-Zkq" id="0MS-SO-00c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
