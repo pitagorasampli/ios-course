@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9E257D83273B140100C78777 /* IntroInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E257D82273B140100C78777 /* IntroInfoView.swift */; };
-		9E55CA17273C3571002AAEC5 /* FakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55CA16273C3571002AAEC5 /* FakeViewController.swift */; };
-		9E55CA19273C38D4002AAEC5 /* FakeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55CA18273C38D4002AAEC5 /* FakeTableViewCell.swift */; };
+		9E55CA17273C3571002AAEC5 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55CA16273C3571002AAEC5 /* TodoListViewController.swift */; };
+		9E55CA19273C38D4002AAEC5 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55CA18273C38D4002AAEC5 /* TaskTableViewCell.swift */; };
 		9EF0DFDA2739C1EB00A27A4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0DFD92739C1EB00A27A4B /* AppDelegate.swift */; };
 		9EF0DFDC2739C1EB00A27A4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0DFDB2739C1EB00A27A4B /* SceneDelegate.swift */; };
 		9EF0DFDE2739C1EB00A27A4B /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0DFDD2739C1EB00A27A4B /* IntroViewController.swift */; };
@@ -39,8 +39,8 @@
 
 /* Begin PBXFileReference section */
 		9E257D82273B140100C78777 /* IntroInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroInfoView.swift; sourceTree = "<group>"; };
-		9E55CA16273C3571002AAEC5 /* FakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeViewController.swift; sourceTree = "<group>"; };
-		9E55CA18273C38D4002AAEC5 /* FakeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTableViewCell.swift; sourceTree = "<group>"; };
+		9E55CA16273C3571002AAEC5 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
+		9E55CA18273C38D4002AAEC5 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		9EF0DFD62739C1EB00A27A4B /* HTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF0DFD92739C1EB00A27A4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EF0DFDB2739C1EB00A27A4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,13 +80,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9E55CA1A273C392E002AAEC5 /* FakeViewController */ = {
+		9E55CA1A273C392E002AAEC5 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
-				9E55CA16273C3571002AAEC5 /* FakeViewController.swift */,
-				9E55CA18273C38D4002AAEC5 /* FakeTableViewCell.swift */,
+				9E55CA16273C3571002AAEC5 /* TodoListViewController.swift */,
+				9E55CA18273C38D4002AAEC5 /* TaskTableViewCell.swift */,
 			);
-			path = FakeViewController;
+			path = TodoList;
+			sourceTree = "<group>";
+		};
+		9EC8900D273D874200FBDE0E /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				9EF0DFDD2739C1EB00A27A4B /* IntroViewController.swift */,
+				9E257D82273B140100C78777 /* IntroInfoView.swift */,
+			);
+			path = Intro;
 			sourceTree = "<group>";
 		};
 		9EF0DFCD2739C1EB00A27A4B = {
@@ -114,12 +123,11 @@
 			children = (
 				9EF0DFD92739C1EB00A27A4B /* AppDelegate.swift */,
 				9EF0DFDB2739C1EB00A27A4B /* SceneDelegate.swift */,
-				9EF0DFDD2739C1EB00A27A4B /* IntroViewController.swift */,
-				9E257D82273B140100C78777 /* IntroInfoView.swift */,
+				9EC8900D273D874200FBDE0E /* Intro */,
+				9E55CA1A273C392E002AAEC5 /* TodoList */,
 				9EF0DFE22739C1F000A27A4B /* Assets.xcassets */,
 				9EF0DFE42739C1F000A27A4B /* LaunchScreen.storyboard */,
 				9EF0DFE72739C1F000A27A4B /* Info.plist */,
-				9E55CA1A273C392E002AAEC5 /* FakeViewController */,
 			);
 			path = HTodo;
 			sourceTree = "<group>";
@@ -273,9 +281,9 @@
 			files = (
 				9EF0DFDE2739C1EB00A27A4B /* IntroViewController.swift in Sources */,
 				9E257D83273B140100C78777 /* IntroInfoView.swift in Sources */,
-				9E55CA17273C3571002AAEC5 /* FakeViewController.swift in Sources */,
+				9E55CA17273C3571002AAEC5 /* TodoListViewController.swift in Sources */,
 				9EF0DFDA2739C1EB00A27A4B /* AppDelegate.swift in Sources */,
-				9E55CA19273C38D4002AAEC5 /* FakeTableViewCell.swift in Sources */,
+				9E55CA19273C38D4002AAEC5 /* TaskTableViewCell.swift in Sources */,
 				9EF0DFDC2739C1EB00A27A4B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

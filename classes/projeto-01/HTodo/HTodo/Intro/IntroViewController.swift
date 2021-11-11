@@ -89,8 +89,14 @@ class IntroViewController: UIViewController {
     // =========================================================
     
     func setup() {
+        continueButton.addTarget(self, action: #selector(continueAction), for: .touchUpInside)
         setupViews()
         setupContraints()
+    }
+    
+    @objc private func continueAction() {
+        let viewController = TodoListViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
-        window?.rootViewController = FakeViewController()
+        window?.rootViewController = UINavigationController(rootViewController: TodoListViewController())
+        
         window?.makeKeyAndVisible()
     }
 
