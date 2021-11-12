@@ -50,12 +50,21 @@ class TodoListViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     private func setup() {
         setupViews()
         setupContraints()
         setupTableView()
         setupNavigationBar()
-        continueButton.addTarget(self, action: #selector(continueAction), for: .touchUpInside)
+        continueButton.addTarget(self, action: #selector(addTaskAction), for: .touchUpInside)
     }
     
     private func setupNavigationBar() {
@@ -68,9 +77,17 @@ class TodoListViewController: UIViewController {
         taskTableView.delegate = self
     }
     
-    @objc private func continueAction() {
-        // TODO: Adicione a nova ViewController para adicionar uma nova tarefa no lista de TODO
-        // navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+    @objc private func addTaskAction() {
+        let viewController = AddTaskViewController()
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension TodoListViewController: AddTaskViewControllerDelegate {
+    func didSave(task: Task) {
+        taskList.append(task)
+        taskTableView.reloadData()
     }
 }
 

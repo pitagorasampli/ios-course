@@ -53,7 +53,7 @@ extension ViewController {
         )
         
         viewController.delegate = self
-        viewController.dismissed = {
+        
             print("DIMISSED")
         }
         viewController.modalPresentationStyle = .fullScreen

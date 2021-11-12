@@ -10,6 +10,8 @@
 		9E257D83273B140100C78777 /* IntroInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E257D82273B140100C78777 /* IntroInfoView.swift */; };
 		9E55CA17273C3571002AAEC5 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55CA16273C3571002AAEC5 /* TodoListViewController.swift */; };
 		9E55CA19273C38D4002AAEC5 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55CA18273C38D4002AAEC5 /* TaskTableViewCell.swift */; };
+		9EDCD114273EED0D00AD9EDA /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDCD113273EED0D00AD9EDA /* AddTaskViewController.swift */; };
+		9EDCD117273EEF5300AD9EDA /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDCD116273EEF5300AD9EDA /* PrimaryButton.swift */; };
 		9EF0DFDA2739C1EB00A27A4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0DFD92739C1EB00A27A4B /* AppDelegate.swift */; };
 		9EF0DFDC2739C1EB00A27A4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0DFDB2739C1EB00A27A4B /* SceneDelegate.swift */; };
 		9EF0DFDE2739C1EB00A27A4B /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0DFDD2739C1EB00A27A4B /* IntroViewController.swift */; };
@@ -41,6 +43,8 @@
 		9E257D82273B140100C78777 /* IntroInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroInfoView.swift; sourceTree = "<group>"; };
 		9E55CA16273C3571002AAEC5 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		9E55CA18273C38D4002AAEC5 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		9EDCD113273EED0D00AD9EDA /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		9EDCD116273EEF5300AD9EDA /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		9EF0DFD62739C1EB00A27A4B /* HTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF0DFD92739C1EB00A27A4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EF0DFDB2739C1EB00A27A4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,22 @@
 			path = Intro;
 			sourceTree = "<group>";
 		};
+		9EDCD112273EECF500AD9EDA /* AddTask */ = {
+			isa = PBXGroup;
+			children = (
+				9EDCD113273EED0D00AD9EDA /* AddTaskViewController.swift */,
+			);
+			path = AddTask;
+			sourceTree = "<group>";
+		};
+		9EDCD115273EEE1100AD9EDA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9EDCD116273EEF5300AD9EDA /* PrimaryButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		9EF0DFCD2739C1EB00A27A4B = {
 			isa = PBXGroup;
 			children = (
@@ -121,10 +141,12 @@
 		9EF0DFD82739C1EB00A27A4B /* HTodo */ = {
 			isa = PBXGroup;
 			children = (
+				9EDCD115273EEE1100AD9EDA /* UI */,
 				9EF0DFD92739C1EB00A27A4B /* AppDelegate.swift */,
 				9EF0DFDB2739C1EB00A27A4B /* SceneDelegate.swift */,
 				9EC8900D273D874200FBDE0E /* Intro */,
 				9E55CA1A273C392E002AAEC5 /* TodoList */,
+				9EDCD112273EECF500AD9EDA /* AddTask */,
 				9EF0DFE22739C1F000A27A4B /* Assets.xcassets */,
 				9EF0DFE42739C1F000A27A4B /* LaunchScreen.storyboard */,
 				9EF0DFE72739C1F000A27A4B /* Info.plist */,
@@ -285,6 +307,8 @@
 				9EF0DFDA2739C1EB00A27A4B /* AppDelegate.swift in Sources */,
 				9E55CA19273C38D4002AAEC5 /* TaskTableViewCell.swift in Sources */,
 				9EF0DFDC2739C1EB00A27A4B /* SceneDelegate.swift in Sources */,
+				9EDCD117273EEF5300AD9EDA /* PrimaryButton.swift in Sources */,
+				9EDCD114273EED0D00AD9EDA /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
