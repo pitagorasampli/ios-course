@@ -15,6 +15,7 @@
 		9EDCD114273EED0D00AD9EDA /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDCD113273EED0D00AD9EDA /* AddTaskViewController.swift */; };
 		9EDCD117273EEF5300AD9EDA /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDCD116273EEF5300AD9EDA /* PrimaryButton.swift */; };
 		9EE390CF2744375C001A7A8A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE390CE2744375C001A7A8A /* Task.swift */; };
+		9EEE48D5274450CD00931C88 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEE48D4274450CD00931C88 /* IntroView.swift */; };
 		9EF0DFDA2739C1EB00A27A4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0DFD92739C1EB00A27A4B /* AppDelegate.swift */; };
 		9EF0DFDC2739C1EB00A27A4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0DFDB2739C1EB00A27A4B /* SceneDelegate.swift */; };
 		9EF0DFDE2739C1EB00A27A4B /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0DFDD2739C1EB00A27A4B /* IntroViewController.swift */; };
@@ -56,6 +57,7 @@
 		9EDCD113273EED0D00AD9EDA /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		9EDCD116273EEF5300AD9EDA /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		9EE390CE2744375C001A7A8A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		9EEE48D4274450CD00931C88 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		9EF0DFD62739C1EB00A27A4B /* HTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF0DFD92739C1EB00A27A4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EF0DFDB2739C1EB00A27A4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				9EF0DFDD2739C1EB00A27A4B /* IntroViewController.swift */,
+				9EEE48D4274450CD00931C88 /* IntroView.swift */,
 				9E257D82273B140100C78777 /* IntroInfoView.swift */,
 			);
 			path = Intro;
@@ -176,6 +179,14 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
+		9EEE48D62744543400931C88 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				9EE390CD27443752001A7A8A /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		9EF0DFCD2739C1EB00A27A4B = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				9EEE48D32744402600931C88 /* Features */,
-				9EE390CD27443752001A7A8A /* Model */,
+				9EEE48D62744543400931C88 /* Domain */,
 				9EDCD115273EEE1100AD9EDA /* UI */,
 				9EF0DFD92739C1EB00A27A4B /* AppDelegate.swift */,
 				9EF0DFDB2739C1EB00A27A4B /* SceneDelegate.swift */,
@@ -475,6 +486,7 @@
 				9E55CA19273C38D4002AAEC5 /* TaskTableViewCell.swift in Sources */,
 				9EF0DFDC2739C1EB00A27A4B /* SceneDelegate.swift in Sources */,
 				9EDCD117273EEF5300AD9EDA /* PrimaryButton.swift in Sources */,
+				9EEE48D5274450CD00931C88 /* IntroView.swift in Sources */,
 				9EE390CF2744375C001A7A8A /* Task.swift in Sources */,
 				9EDCD114273EED0D00AD9EDA /* AddTaskViewController.swift in Sources */,
 			);
