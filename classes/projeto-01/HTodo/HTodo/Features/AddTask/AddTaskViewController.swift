@@ -50,7 +50,7 @@ class AddTaskViewController: UIViewController {
     
     @objc private func saveAction() {
         let text = taskTextfield.text ?? ""
-        delegate?.didSave(task: Task(name: text, isSelected: false))
+        delegate?.didSave(task: Task(name: text, isCompleted: false))
         navigationController?.popViewController(animated: true)
     }
 }

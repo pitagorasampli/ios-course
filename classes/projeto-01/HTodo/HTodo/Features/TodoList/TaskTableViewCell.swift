@@ -54,7 +54,7 @@ class TaskTableViewCell: UITableViewCell {
     func set(task: Task) {
         self.titleLabel.text = task.name
         
-        if task.isSelected {
+        if task.isCompleted {
             self.circleView.backgroundColor = UIColor(named: "accentColor")
         } else {
             self.circleView.backgroundColor = .white

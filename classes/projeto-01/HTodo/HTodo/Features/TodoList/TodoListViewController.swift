@@ -6,23 +6,12 @@
 //
 
 import UIKit
-
-struct Task {
-    var name: String
-    var isSelected: Bool
-}
+import RealmSwift
 
 class TodoListViewController: UIViewController {
     
     // MARK: Properties
-    private var taskList: [Task] = [
-        Task(name: "Jobson", isSelected: false),
-        Task(name: "Jefferson", isSelected: true),
-        Task(name: "Julio", isSelected: false),
-        Task(name: "Janderson", isSelected: true),
-        Task(name: "Jailson", isSelected: false),
-        Task(name: "Janiquadros", isSelected: false)
-    ]
+    private var taskList: [Task] = []
     
     private let taskTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
@@ -55,10 +44,6 @@ class TodoListViewController: UIViewController {
         setupNavigationBar()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     private func setup() {
         setupViews()
         setupContraints()
@@ -73,6 +58,7 @@ class TodoListViewController: UIViewController {
     }
     
     private func setupTableView() {
+        taskList = getOrderedTasks()
         taskTableView.dataSource = self
         taskTableView.delegate = self
     }
@@ -82,11 +68,33 @@ class TodoListViewController: UIViewController {
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    private func getOrderedTasks() -> [Task] {
+        do {
+            let realm = try Realm()
+            
+            let results = realm.objects(Task.self)
+            let newTaskList = Array(results)
+            
+            return newTaskList.sorted { first, second in
+                !first.isCompleted && second.isCompleted
+            }
+        } catch {
+            print(error)
+            return []
+        }
+    }
 }
 
 extension TodoListViewController: AddTaskViewControllerDelegate {
     func didSave(task: Task) {
-        taskList.append(task)
+        let realm = try? Realm()
+        
+        try? realm?.write {
+            realm?.add(task, update: .all)
+        }
+        
+        taskList = getOrderedTasks()
         taskTableView.reloadData()
     }
 }
@@ -117,7 +125,13 @@ extension TodoListViewController: UITableViewDataSource {
 
 extension TodoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        taskList[indexPath.row].isSelected.toggle()
+        let realm = try? Realm()
+        
+        try? realm?.write {
+            taskList[indexPath.row].isCompleted.toggle()
+        }
+        
+        taskList = getOrderedTasks()
         tableView.reloadData()
     }
 }

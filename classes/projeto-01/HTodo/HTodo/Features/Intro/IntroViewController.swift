@@ -95,8 +95,11 @@ class IntroViewController: UIViewController {
     }
     
     @objc private func continueAction() {
-        let viewController = TodoListViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+        UserDefaults.standard.set(true, forKey: "isOnboardingAppeared")
+        
+        let viewController = UINavigationController(rootViewController: TodoListViewController())
+        viewController.modalPresentationStyle = .fullScreen
+        self.showDetailViewController(viewController, sender: nil)
     }
 }
 
