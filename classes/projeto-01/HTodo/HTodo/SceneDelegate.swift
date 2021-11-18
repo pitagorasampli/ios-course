@@ -27,7 +27,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func getRootViewController() -> UIViewController {
         let rootViewController: UIViewController
         if UserDefaults.standard.bool(forKey: "isOnboardingAppeared") {
-            rootViewController = UINavigationController(rootViewController: TodoListViewController())
+            rootViewController = UINavigationController(
+                rootViewController: DependencyManager.makeTodoListViewController()
+            )
         } else {
             rootViewController = IntroViewController()
         }

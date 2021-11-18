@@ -12,6 +12,11 @@
 		9E257D83273B140100C78777 /* IntroInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E257D82273B140100C78777 /* IntroInfoView.swift */; };
 		9E55CA17273C3571002AAEC5 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55CA16273C3571002AAEC5 /* TodoListViewController.swift */; };
 		9E55CA19273C38D4002AAEC5 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55CA18273C38D4002AAEC5 /* TaskTableViewCell.swift */; };
+		9E984BAF2746E49E009CCDD1 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E984BAE2746E49E009CCDD1 /* TodoListView.swift */; };
+		9E984BB12746E6C5009CCDD1 /* TodoListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E984BB02746E6C5009CCDD1 /* TodoListPresenter.swift */; };
+		9E984BB32746E7C8009CCDD1 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E984BB22746E7C8009CCDD1 /* DependencyManager.swift */; };
+		9E984BB62746EF06009CCDD1 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E984BB52746EF06009CCDD1 /* AddTaskView.swift */; };
+		9E984BB82746F0BC009CCDD1 /* AddTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E984BB72746F0BC009CCDD1 /* AddTaskPresenter.swift */; };
 		9EDCD114273EED0D00AD9EDA /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDCD113273EED0D00AD9EDA /* AddTaskViewController.swift */; };
 		9EDCD117273EEF5300AD9EDA /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDCD116273EEF5300AD9EDA /* PrimaryButton.swift */; };
 		9EE390CF2744375C001A7A8A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE390CE2744375C001A7A8A /* Task.swift */; };
@@ -54,6 +59,11 @@
 		9E257D82273B140100C78777 /* IntroInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroInfoView.swift; sourceTree = "<group>"; };
 		9E55CA16273C3571002AAEC5 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		9E55CA18273C38D4002AAEC5 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		9E984BAE2746E49E009CCDD1 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		9E984BB02746E6C5009CCDD1 /* TodoListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListPresenter.swift; sourceTree = "<group>"; };
+		9E984BB22746E7C8009CCDD1 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
+		9E984BB52746EF06009CCDD1 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		9E984BB72746F0BC009CCDD1 /* AddTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskPresenter.swift; sourceTree = "<group>"; };
 		9EDCD113273EED0D00AD9EDA /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		9EDCD116273EEF5300AD9EDA /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		9EE390CE2744375C001A7A8A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -131,8 +141,18 @@
 			children = (
 				9E55CA16273C3571002AAEC5 /* TodoListViewController.swift */,
 				9E55CA18273C38D4002AAEC5 /* TaskTableViewCell.swift */,
+				9E984BAE2746E49E009CCDD1 /* TodoListView.swift */,
+				9E984BB02746E6C5009CCDD1 /* TodoListPresenter.swift */,
 			);
 			path = TodoList;
+			sourceTree = "<group>";
+		};
+		9E984BB42746E7CE009CCDD1 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				9E984BB22746E7C8009CCDD1 /* DependencyManager.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		9EC8900D273D874200FBDE0E /* Intro */ = {
@@ -149,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				9EDCD113273EED0D00AD9EDA /* AddTaskViewController.swift */,
+				9E984BB52746EF06009CCDD1 /* AddTaskView.swift */,
+				9E984BB72746F0BC009CCDD1 /* AddTaskPresenter.swift */,
 			);
 			path = AddTask;
 			sourceTree = "<group>";
@@ -172,6 +194,7 @@
 		9EEE48D32744402600931C88 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				9E984BB42746E7CE009CCDD1 /* DI */,
 				9EC8900D273D874200FBDE0E /* Intro */,
 				9E55CA1A273C392E002AAEC5 /* TodoList */,
 				9EDCD112273EECF500AD9EDA /* AddTask */,
@@ -479,15 +502,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E984BB12746E6C5009CCDD1 /* TodoListPresenter.swift in Sources */,
+				9E984BB62746EF06009CCDD1 /* AddTaskView.swift in Sources */,
 				9EF0DFDE2739C1EB00A27A4B /* IntroViewController.swift in Sources */,
 				9E257D83273B140100C78777 /* IntroInfoView.swift in Sources */,
 				9E55CA17273C3571002AAEC5 /* TodoListViewController.swift in Sources */,
 				9EF0DFDA2739C1EB00A27A4B /* AppDelegate.swift in Sources */,
+				9E984BAF2746E49E009CCDD1 /* TodoListView.swift in Sources */,
 				9E55CA19273C38D4002AAEC5 /* TaskTableViewCell.swift in Sources */,
 				9EF0DFDC2739C1EB00A27A4B /* SceneDelegate.swift in Sources */,
 				9EDCD117273EEF5300AD9EDA /* PrimaryButton.swift in Sources */,
 				9EEE48D5274450CD00931C88 /* IntroView.swift in Sources */,
 				9EE390CF2744375C001A7A8A /* Task.swift in Sources */,
+				9E984BB32746E7C8009CCDD1 /* DependencyManager.swift in Sources */,
+				9E984BB82746F0BC009CCDD1 /* AddTaskPresenter.swift in Sources */,
 				9EDCD114273EED0D00AD9EDA /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

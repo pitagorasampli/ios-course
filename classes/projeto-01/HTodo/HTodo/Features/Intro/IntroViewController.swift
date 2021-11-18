@@ -38,7 +38,9 @@ class IntroViewController: UIViewController {
     @objc private func continueAction() {
         UserDefaults.standard.set(true, forKey: "isOnboardingAppeared")
         
-        let viewController = UINavigationController(rootViewController: TodoListViewController())
+        let viewController = UINavigationController(
+            rootViewController: DependencyManager.makeTodoListViewController()
+        )
         viewController.modalPresentationStyle = .fullScreen
         self.showDetailViewController(viewController, sender: nil)
     }
@@ -57,6 +59,5 @@ extension IntroViewController {
             baseView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 0),
             baseView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 0)
         ])
-        
     }
 }

@@ -7,50 +7,43 @@
 
 import UIKit
 
-protocol AddTaskViewControllerDelegate: AnyObject {
-    func didSave(task: Task)
-}
-
-class AddTaskViewController: UIViewController {
+final class AddTaskViewController: UIViewController {
 
     // MARK: Properties
-    weak var delegate: AddTaskViewControllerDelegate?
+    private let baseView = AddTaskView()
+    private let presenter: AddTaskPresenter
     
-    // MARK: Subview
-    private let taskTextfield: UITextField = {
-        let view = UITextField(frame: .zero)
-        view.layer.cornerRadius = 8
-        view.backgroundColor = .white
-        view.clearButtonMode = .whileEditing
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    // MARK: Init
+    init(presenter: AddTaskPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    private let saveButton: PrimaryButton = {
-        let view = PrimaryButton()
-        view.setTitle("Salvar", for: .normal)
-        view.isHidden = true
-        view.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
-        return view
-    }()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "background")
         setup()
     }
     
+    // MARK: Private methods
     private func setup() {
+        baseView.taskTextfield.delegate = self
+        baseView.saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
+        setupUI()
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
         self.title = "Adicionar"
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        taskTextfield.delegate = self
-        setupViews()
-        setupContraints()
     }
     
     @objc private func saveAction() {
-        let text = taskTextfield.text ?? ""
-        delegate?.didSave(task: Task(name: text, isCompleted: false))
+        presenter.save(titleText: baseView.taskTextfield.text)
         navigationController?.popViewController(animated: true)
     }
 }
@@ -62,37 +55,24 @@ extension AddTaskViewController: UITextFieldDelegate {
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        saveButton.isHidden = text.isEmpty
+        baseView.saveButton.isHidden = presenter.isSaveButtonHidden(text: textField.text)
     }
 }
 
-// =========================================================
-// MARK: - UI
-// =========================================================
-
 extension AddTaskViewController {
-    func setupViews() {
-        view.addSubview(taskTextfield)
-        view.addSubview(saveButton)
-    }
-    
-    func setupContraints() {
+    func setupUI() {
+        view.backgroundColor = UIColor(named: "background")
+
+        view.addSubview(baseView)
+
         let safeArea = view.safeAreaLayoutGuide
-        
+
         NSLayoutConstraint.activate([
-            taskTextfield.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 20),
-            taskTextfield.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-            taskTextfield.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-            taskTextfield.heightAnchor.constraint(equalToConstant: 55)
-        ])
+            baseView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 0),
+            baseView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 0),
+            baseView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 0),
+            baseView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 0),
         
-        
-        NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: taskTextfield.bottomAnchor, constant: 30),
-            saveButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-            saveButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-            saveButton.heightAnchor.constraint(equalToConstant: 45),
         ])
     }
 }

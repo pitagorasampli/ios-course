@@ -6,32 +6,24 @@
 //
 
 import UIKit
-import RealmSwift
 
 class TodoListViewController: UIViewController {
     
     // MARK: Properties
-    private var taskList: [Task] = []
+    private let presenter: TodoListPresenter
+    private let baseView = TodoListView()
     
-    private let taskTableView: UITableView = {
-        let view = UITableView(frame: .zero, style: .plain)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.register(TaskTableViewCell.self, forCellReuseIdentifier: TaskTableViewCell.identifier)
-        view.separatorStyle = .none
-        return view
-    }()
+    // MARK: Constructor
+    init(presenter: TodoListPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    let continueButton: UIButton = {
-        let view = UIButton(type: .system)
-        view.setTitle("Adicionar Tarefa", for: .normal)
-        view.backgroundColor = UIColor(named: "accentColor")
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        view.tintColor = .white
-        view.layer.cornerRadius = 8
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -41,15 +33,16 @@ class TodoListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        baseView.taskTableView.reloadData()
         setupNavigationBar()
     }
     
+    // MARK: Private methods
     private func setup() {
-        setupViews()
-        setupContraints()
+        setupUI()
         setupTableView()
         setupNavigationBar()
-        continueButton.addTarget(self, action: #selector(addTaskAction), for: .touchUpInside)
+        baseView.continueButton.addTarget(self, action: #selector(addTaskAction), for: .touchUpInside)
     }
     
     private func setupNavigationBar() {
@@ -58,44 +51,17 @@ class TodoListViewController: UIViewController {
     }
     
     private func setupTableView() {
-        taskList = getOrderedTasks()
-        taskTableView.dataSource = self
-        taskTableView.delegate = self
+        baseView.taskTableView.dataSource = self
+        baseView.taskTableView.delegate = self
+        
+        presenter.reloadData = { [weak self] in
+            self?.baseView.taskTableView.reloadData()
+        }
     }
     
     @objc private func addTaskAction() {
-        let viewController = AddTaskViewController()
-        viewController.delegate = self
+        let viewController = DependencyManager.makeAddTaskViewController()
         navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    private func getOrderedTasks() -> [Task] {
-        do {
-            let realm = try Realm()
-            
-            let results = realm.objects(Task.self)
-            let newTaskList = Array(results)
-            
-            return newTaskList.sorted { first, second in
-                !first.isCompleted && second.isCompleted
-            }
-        } catch {
-            print(error)
-            return []
-        }
-    }
-}
-
-extension TodoListViewController: AddTaskViewControllerDelegate {
-    func didSave(task: Task) {
-        let realm = try? Realm()
-        
-        try? realm?.write {
-            realm?.add(task, update: .all)
-        }
-        
-        taskList = getOrderedTasks()
-        taskTableView.reloadData()
     }
 }
 
@@ -105,15 +71,14 @@ extension TodoListViewController: AddTaskViewControllerDelegate {
 
 extension TodoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList.count
+        return presenter.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.identifier, for: indexPath)
         
         let fakeCell = cell as? TaskTableViewCell
-        let task = taskList[indexPath.row]
-        fakeCell?.set(task: task)
+        fakeCell?.set(task: presenter.getTask(row: indexPath.row))
                 
         return cell
     }
@@ -125,43 +90,21 @@ extension TodoListViewController: UITableViewDataSource {
 
 extension TodoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let realm = try? Realm()
-        
-        try? realm?.write {
-            taskList[indexPath.row].isCompleted.toggle()
-        }
-        
-        taskList = getOrderedTasks()
-        tableView.reloadData()
+        presenter.didSelectRowAt(row: indexPath.row)
     }
 }
 
-// =========================================================
-// MARK: - UI
-// =========================================================
-
 extension TodoListViewController {
-    func setupViews() {
-        view.addSubview(taskTableView)
-        view.addSubview(continueButton)
-    }
-    
-    func setupContraints() {
+    func setupUI() {
+        view.addSubview(baseView)
         let safeArea = view.safeAreaLayoutGuide
-        
+
         NSLayoutConstraint.activate([
-            taskTableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 0),
-            taskTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 0),
-            taskTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 0),
-        ])
+            baseView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 0),
+            baseView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 0),
+            baseView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 0),
+            baseView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 0),
         
-        
-        NSLayoutConstraint.activate([
-            continueButton.topAnchor.constraint(equalTo: taskTableView.bottomAnchor, constant: 20),
-            continueButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 40),
-            continueButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -40),
-            continueButton.heightAnchor.constraint(equalToConstant: 45),
-            continueButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20),
         ])
     }
 }
